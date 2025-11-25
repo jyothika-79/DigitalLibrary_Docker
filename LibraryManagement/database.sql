@@ -27,5 +27,7 @@ INSERT INTO books (title, author) VALUES
 ("Design Patterns", "Erich Gamma"),
 ("Flask Web Development", "Miguel Grinberg");
 
+INSERT INTO users (name, email, password) VALUES ('admin', 'admib@gmail.com','admin123');
+
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root';
 FLUSH PRIVILEGES;
