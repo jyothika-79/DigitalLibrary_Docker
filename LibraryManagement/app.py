@@ -7,9 +7,9 @@ app.secret_key = "supersecretkey"
 
 # Database connection
 db = mysql.connector.connect(
-    host="localhost",
+    host="digitallibrary.cirn2jekr1ft.eu-west-1.rds.amazonaws.com",
     user="root",
-    password="Ujwal@2016",
+    password="Ujwal2016",
     database="digital_library"
 )
 cursor = db.cursor(dictionary=True)
@@ -28,7 +28,7 @@ def signup():
         email = request.form["email"]
         password = request.form["password"]
 
-        cursor.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)", 
+        cursor.execute("INSERT INTO users (name, email, password) VALUES (%s, %s, %s)",
                        (name, email, password))
         db.commit()
         flash("Signup successful! Please login.", "success")
@@ -72,7 +72,7 @@ def borrow(book_id):
     if "user_id" not in session:
         return redirect(url_for("signin"))
 
-    cursor.execute("INSERT INTO borrow_records (user_id, book_id) VALUES (%s, %s)", 
+    cursor.execute("INSERT INTO borrow_records (user_id, book_id) VALUES (%s, %s)",
                    (session["user_id"], book_id))
     db.commit()
     flash("Book borrowed successfully!", "success")
@@ -84,7 +84,7 @@ def mybooks():
         return redirect(url_for("signin"))
 
     cursor.execute("""
-        SELECT b.title, b.author, br.borrow_date 
+        SELECT b.title, b.author, br.borrow_date
         FROM borrow_records br
         JOIN books b ON br.book_id = b.id
         WHERE br.user_id=%s
@@ -103,4 +103,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+        app.run(host="0.0.0.0", port=5000, debug=True)
