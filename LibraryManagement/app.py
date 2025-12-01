@@ -9,7 +9,7 @@ app.secret_key = "supersecretkey"
 db = mysql.connector.connect(
     #DB endpoint & username and password created in AWS
     host="digitallibrary.cirn2jekr1ft.eu-west-1.rds.amazonaws.com",
-    user="root",
+    user="admin",
     password="Ujwal2016",
     database="digital_library"
 )
