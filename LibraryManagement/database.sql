@@ -29,5 +29,4 @@ INSERT INTO books (title, author) VALUES
 
 INSERT INTO users (name, email, password) VALUES ('admin', 'admib@gmail.com','admin123');
 
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root';
 FLUSH PRIVILEGES;
